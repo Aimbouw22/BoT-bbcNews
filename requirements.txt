@@ -7,3 +7,4 @@ google-auth==2.35.0
 google-auth-oauthlib==1.2.1
 google-api-python-client==2.149.0
 numpy==1.26.4
+feedparser==6.0.11
