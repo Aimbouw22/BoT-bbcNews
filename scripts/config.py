@@ -15,8 +15,8 @@ YT_CLIENT_SECRET = os.environ["YT_CLIENT_SECRET"]
 YT_REFRESH_TOKEN = os.environ["YT_REFRESH_TOKEN"]
 
 # --- Telegram ---
-TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
-TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"].strip()
 
 # --- Parámetros del vídeo ---
 VIDEO_WIDTH = 1080
