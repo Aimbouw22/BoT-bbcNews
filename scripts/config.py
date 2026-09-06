@@ -6,13 +6,13 @@ que en producción vienen de los Secrets de GitHub Actions.
 import os
 
 # --- APIs de contenido ---
-PEXELS_API_KEY = os.environ["PEXELS_API_KEY"]
-GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
+PEXELS_API_KEY = os.environ["PEXELS_API_KEY"].strip()
+GEMINI_API_KEY = os.environ["GEMINI_API_KEY"].strip()
 
 # --- YouTube OAuth ---
-YT_CLIENT_ID = os.environ["YT_CLIENT_ID"]
-YT_CLIENT_SECRET = os.environ["YT_CLIENT_SECRET"]
-YT_REFRESH_TOKEN = os.environ["YT_REFRESH_TOKEN"]
+YT_CLIENT_ID = os.environ["YT_CLIENT_ID"].strip()
+YT_CLIENT_SECRET = os.environ["YT_CLIENT_SECRET"].strip()
+YT_REFRESH_TOKEN = os.environ["YT_REFRESH_TOKEN"].strip()
 
 # --- Telegram ---
 TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"].strip()
