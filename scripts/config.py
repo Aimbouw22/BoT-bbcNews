@@ -25,7 +25,7 @@ TARGET_DURATION = 30  # segundos aprox. de cada short
 MUSIC_VOLUME = 0.12  # volumen relativo de la música de fondo frente a la voz
 
 # --- Voz (Piper, motor local, sin llamadas a servidores externos) ---
-PIPER_VOICE_NAME = "es_ES-davefx-medium"
+PIPER_VOICE_NAME = "en_US-lessac-medium"
 
 # --- Rutas ---
 # Correcto para tu estructura real (config.py está en scripts/):
