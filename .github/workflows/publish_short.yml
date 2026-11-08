@@ -28,8 +28,16 @@ jobs:
 
       - name: Permitir a ImageMagick generar texto (política de seguridad por defecto lo bloquea)
         run: |
-          sudo sed -i 's/rights="none" pattern="@\*"/rights="read|write" pattern="@*"/' /etc/ImageMagick-6/policy.xml || true
-          sudo sed -i '/pattern="TEXT"/d' /etc/ImageMagick-6/policy.xml || true
+          for f in /etc/ImageMagick-6/policy.xml /etc/ImageMagick-7/policy.xml; do
+            if [ -f "$f" ]; then
+              echo "Editando $f"
+              sudo sed -i '/pattern="@\*"/d' "$f"
+              sudo sed -i '/pattern="TEXT"/d' "$f"
+              sudo sed -i '/pattern="LABEL"/d' "$f"
+            fi
+          done
+          echo "--- politicas que quedan con @ ---"
+          grep -R 'pattern="@' /etc/ImageMagick-*/policy.xml || echo "ninguna (correcto)"
 
       - name: Instalar dependencias Python
         run: pip install -r requirements.txt
@@ -64,6 +72,12 @@ jobs:
         run: |
           git config user.name "shorts-bot"
           git config user.email "actions@github.com"
+          git fetch origin main
           git add topics_used.json
-          git diff --staged --quiet || git commit -m "Actualizar temas usados [skip ci]"
-          git push
+          if git diff --staged --quiet; then
+            echo "No hay cambios que guardar."
+            exit 0
+          fi
+          git commit -m "Actualizar temas usados [skip ci]"
+          git rebase origin/main
+          git push origin HEAD:main
